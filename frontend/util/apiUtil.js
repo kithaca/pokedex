@@ -8,7 +8,16 @@ var apiUtil = {
         PokemonActions.receiveAllPokemon( response );
       }
     });
+  },
+  fetchOnePokemon: function (id) {
+    $.ajax( "/api/pokemon/" + id, {
+      method: 'GET',
+      success: function( response ) {
+        PokemonActions.receiveOnePokemon( response );
+      }
+    });
   }
+
 };
 
 module.exports = apiUtil;

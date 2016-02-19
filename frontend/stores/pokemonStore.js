@@ -9,6 +9,9 @@ PokemonStore.__onDispatch = function( payload ) {
     case PokemonConstants.POKEMON_RECEIVED:
       PokemonStore.resetPokemons( payload.pokemons );
       break;
+    case PokemonConstants.ONE_POKEMON_RECEIVED:
+      PokemonStore.updateOnePokemon( payload.pokemon );
+      break;
   }
 };
 
@@ -26,6 +29,15 @@ PokemonStore.resetPokemons = function(pokemons) {
     _pokemons[pokeman.id] = pokeman;
   });
   this.__emitChange();
+};
+
+PokemonStore.updateOnePokemon = function( pokemon ) {
+  _pokemons[pokemon.id] = pokemon;
+  this.__emitChange();
+};
+
+PokemonStore.find = function(pokemonId) {
+  return _pokemons[pokemonId];
 };
 
 module.exports = PokemonStore;
