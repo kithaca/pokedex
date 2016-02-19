@@ -1,11 +1,15 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PokemonIndex = require('./components/pokemonIndex.jsx');
+var App = require('./components/app.jsx');
+var Router = require('react-router').Router;
+var Route = require('react-router').Route;
 
-//temporary
-var apiUtil = require('./util/apiUtil.js');
-
-apiUtil.fetchAllPokemon();
+var routes = (
+  <Route component={App} path="/">
+  </Route>
+);
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<Main />, document.getElementById('main'));
+  ReactDOM.render(<Router>{routes}</Router>, document.getElementById('root'));
 });
